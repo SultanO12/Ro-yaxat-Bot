@@ -19,7 +19,7 @@ async def do_start(message: types.Message, state: FSMContext):
   await message.answer(f"<b>Assalomu aleykum {user}!</b> Onlayn ro'yxatdan o'tish botimizga xush kelibsiz!\n\nRo'yxatdan o'tishni boshlash uchun <b>\"Ro'yxatdan o'tishni boshlash\"</b> tugmasini bosing ⬇️", reply_markup=royhat)
   await state.finish()
 
-
+#fix
 @dp.message_handler(text_contains="Ro'yxatdan o'tishni boshlash")
 async def get_full_name(message: types.Message):
   await message.answer("<b>Ismingiz va familiyangizni kiriting:</b>\n\n<i>Misol: Abdulla Rozmetov</i>", reply_markup=ReplyKeyboardRemove())
@@ -40,6 +40,7 @@ async def get_age(message: types.Message, state: FSMContext):
   await message.answer("<b>Iltimos, yuboring yoki telefon raqamingizni yozing:</b>\n\n<i>Masalan: +998912345678</i>", reply_markup=get_num)
   await Reg.phone_number.set()
 
+#get conntact
 @dp.message_handler(content_types=['contact'], state=Reg.phone_number)
 @dp.message_handler(state=Reg.phone_number)
 async def get_phone_number(message: types.Message, state: FSMContext):
